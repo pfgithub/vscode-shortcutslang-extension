@@ -10,19 +10,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage:flowcut"
+		"onLanguage:scpl"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
         "languages": [{
-            "id": "flowcut",
-            "aliases": ["Shortcutslang", "flowcut"],
-            "extensions": [".flowcut",".shorttxt"],
+            "id": "scpl",
+			"aliases": ["shortcutslang", "shorttxt"],
+            "extensions": [".flowcut",".shorttxt", ".scpl"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
-            "language": "flowcut",
-            "scopeName": "source.shortcutslang",
+            "language": "scpl",
+            "scopeName": "source.scpl",
             "path": "./syntaxes/flowcut.tmLanguage.json"
         }]
 	},

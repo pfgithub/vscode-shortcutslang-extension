@@ -6,6 +6,8 @@ import * as actions from './actionCompletionInfo.json';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	// TODO!!! https://code.visualstudio.com/api/language-extensions/programmatic-language-features
+	// ^ diagnostics
 
 	let completionItems = Object.keys(actions).map(a=>{
 		let allActions = actions as {
@@ -27,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 		return item;
 	});
 
-	context.subscriptions.push(vscode.languages.registerCompletionItemProvider('flowcut', {
+	context.subscriptions.push(vscode.languages.registerCompletionItemProvider('scpl', {
 		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
 			return completionItems;
 		}

@@ -1,32 +1,291 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Shortcutslang",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.flowcut",
-				"match": "\\b[A-Za-z0-9@.]+\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.flowcut",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.flowcut",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.shortcutslang"
-}
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "fileTypes": [
+      "scpl"
+    ],
+    "name": "scpl",
+    "patterns": [
+      {
+        "include": "#main"
+      }
+    ],
+    "scopeName": "source.scpl",
+    "uuid": "",
+    "repository": {
+      "main": {
+        "patterns": [
+          {
+            "include": "#action"
+          }
+        ]
+      },
+      "action": {
+        "patterns": [
+          {
+            "include": "#string"
+          },
+          {
+            "include": "#barlist"
+          },
+          {
+            "match": "(:(\\b[A-Za-z0-9\\x{0040}._]+))",
+            "name": "variable.scpl"
+          },
+          {
+            "match": "(\\b[A-Za-z0-9\\x{0040}._]+)",
+            "name": "keyword.scpl"
+          },
+          {
+            "include": "#multi_line_comment"
+          },
+          {
+            "include": "#inline_comment"
+          },
+          {
+            "begin": "(\\()",
+            "beginCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            },
+            "patterns": [
+              {
+                "include": "#action__1"
+              }
+            ],
+            "end": "(\\))",
+            "endCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            }
+          },
+          {
+            "begin": "(\\[)",
+            "beginCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            },
+            "patterns": [
+              {
+                "include": "#action__2"
+              }
+            ],
+            "end": "(\\])",
+            "endCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            }
+          },
+          {
+            "begin": "({)",
+            "beginCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            },
+            "patterns": [
+              {
+                "include": "#action__3"
+              }
+            ],
+            "end": "(})",
+            "endCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            }
+          },
+          {
+            "match": "([\\x{0022}\\:\\x{002c}\\x{003b}\\x{005e}\\-\\x{003e}\\x{003d}])",
+            "name": "punctuation.scpl"
+          },
+          {
+            "match": "([^\\s])",
+            "name": "invalid.scpl"
+          }
+        ]
+      },
+      "action__1": {
+        "patterns": [
+          {
+            "include": "#action"
+          }
+        ]
+      },
+      "action__2": {
+        "patterns": [
+          {
+            "include": "#action"
+          }
+        ]
+      },
+      "action__3": {
+        "patterns": [
+          {
+            "include": "#action"
+          }
+        ]
+      },
+      "barlist": {
+        "patterns": [
+          {
+            "begin": "(^\\s*\\|\\s*)",
+            "beginCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            },
+            "patterns": [
+              {
+                "include": "#barlist__1"
+              }
+            ],
+            "end": "($)",
+            "endCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            }
+          }
+        ]
+      },
+      "barlist__1": {
+        "patterns": [
+          {
+            "include": "#escape"
+          },
+          {
+            "match": "([^\\x{005c}]+)",
+            "name": "string.scpl"
+          }
+        ]
+      },
+      "escape": {
+        "patterns": [
+          {
+            "match": "(\\\\[\\x{0022}\\x{0027}\\x{005c}n])",
+            "name": "punctuation.scpl"
+          },
+          {
+            "begin": "(\\\\\\()",
+            "beginCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            },
+            "patterns": [
+              {
+                "include": "#escape__1"
+              }
+            ],
+            "end": "(\\))",
+            "endCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            }
+          }
+        ]
+      },
+      "escape__1": {
+        "patterns": [
+          {
+            "include": "#action"
+          }
+        ]
+      },
+      "inline_comment": {
+        "patterns": [
+          {
+            "match": "(--.*)",
+            "name": "comment.scpl"
+          },
+          {
+            "match": "(#.*)",
+            "name": "comment.scpl"
+          },
+          {
+            "match": "(//.*)",
+            "name": "comment.scpl"
+          }
+        ]
+      },
+      "multi_line_comment": {
+        "patterns": [
+          {
+            "begin": "(/\\*)",
+            "beginCaptures": {
+              "1": {
+                "name": "comment.scpl"
+              }
+            },
+            "contentName": "comment.scpl",
+            "end": "(\\*/)",
+            "endCaptures": {
+              "1": {
+                "name": "comment.scpl"
+              }
+            }
+          },
+          {
+            "begin": "(--\\[)",
+            "beginCaptures": {
+              "1": {
+                "name": "comment.scpl"
+              }
+            },
+            "contentName": "comment.scpl",
+            "end": "(--\\])",
+            "endCaptures": {
+              "1": {
+                "name": "comment.scpl"
+              }
+            }
+          }
+        ]
+      },
+      "multi_line_comment__1": {
+        "patterns": []
+      },
+      "multi_line_comment__2": {
+        "patterns": []
+      },
+      "string": {
+        "patterns": [
+          {
+            "begin": "(\\\")",
+            "beginCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            },
+            "patterns": [
+              {
+                "include": "#string__1"
+              }
+            ],
+            "end": "(\\\")",
+            "endCaptures": {
+              "1": {
+                "name": "punctuation.scpl"
+              }
+            }
+          }
+        ]
+      },
+      "string__1": {
+        "patterns": [
+          {
+            "include": "#escape"
+          },
+          {
+            "match": "([^\\x{0022}\\x{005c}]+)",
+            "name": "string.scpl"
+          }
+        ]
+      }
+    }
+  }
