@@ -1,7 +1,7 @@
 {
 	"name": "vscode-shortcutslang-extension",
 	"displayName": "Shortcutslang",
-	"description": "Shortcutslang syntax highlighting and autocompletion",
+	"description": "Shortcutslang syntax highlighting, autocompletion, and diagnostics",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.31.0"
@@ -14,17 +14,28 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-        "languages": [{
-            "id": "scpl",
-			"aliases": ["shortcutslang", "shorttxt"],
-            "extensions": [".flowcut",".shorttxt", ".scpl"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "scpl",
-            "scopeName": "source.scpl",
-            "path": "./syntaxes/flowcut.tmLanguage.json"
-        }]
+		"languages": [
+			{
+				"id": "scpl",
+				"aliases": [
+					"shortcutslang",
+					"shorttxt"
+				],
+				"extensions": [
+					".flowcut",
+					".shorttxt",
+					".scpl"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "scpl",
+				"scopeName": "source.scpl",
+				"path": "./syntaxes/flowcut.tmLanguage.json"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
@@ -34,10 +45,13 @@
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28",
-		"tslint": "^5.12.1",
+		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
-		"@types/mocha": "^2.2.42"
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"shortcutslang": "github:pfgithub/shortcutslang"
 	}
 }
