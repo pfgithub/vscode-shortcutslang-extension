@@ -63,10 +63,17 @@ styles [] {
    pygments_scope        = Punctuation
 }
 
+.escape : style {
+   color     = red_2
+   ace_scope             = escape
+   textmate_scope        = constant.character.escape
+   pygments_scope        = String.Escape
+}
+
 .text : style {
    color                 = brown
    ace_scope             = text
-   textmate_scope        = string
+   textmate_scope        = string.quoted.double
    pygments_scope        = String
 }
 
@@ -179,14 +186,14 @@ barlist : context {
 escape : context {
    : pattern {
       regex          \= (\\["'\\n])
-      styles []       = .punctuation;
+      styles []       = .escape;
    }
    : inline_push {
       regex          \= (\\\()
-      styles []       = .punctuation;
+      styles []       = .escape;
       : pop {
          regex       \= (\))
-         styles []    = .punctuation;
+         styles []    = .escape;
       }
       : include "action";
    }

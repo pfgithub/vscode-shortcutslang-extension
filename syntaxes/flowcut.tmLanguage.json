@@ -159,7 +159,7 @@
           },
           {
             "match": "([^\\x{005c}]+)",
-            "name": "string.scpl"
+            "name": "string.quoted.double.scpl"
           }
         ]
       },
@@ -167,13 +167,13 @@
         "patterns": [
           {
             "match": "(\\\\[\\x{0022}\\x{0027}\\x{005c}n])",
-            "name": "punctuation.scpl"
+            "name": "constant.character.escape.scpl"
           },
           {
             "begin": "(\\\\\\()",
             "beginCaptures": {
               "1": {
-                "name": "punctuation.scpl"
+                "name": "constant.character.escape.scpl"
               }
             },
             "patterns": [
@@ -184,7 +184,7 @@
             "end": "(\\))",
             "endCaptures": {
               "1": {
-                "name": "punctuation.scpl"
+                "name": "constant.character.escape.scpl"
               }
             }
           }
@@ -283,7 +283,7 @@
           },
           {
             "match": "([^\\x{0022}\\x{005c}]+)",
-            "name": "string.scpl"
+            "name": "string.quoted.double.scpl"
           }
         ]
       }
