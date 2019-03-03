@@ -12,6 +12,13 @@
 	"activationEvents": [
 		"onLanguage:scpl"
 	],
+	"author": {
+		"name": "pfg",
+		"email": "omegariisthebest@gmail.com",
+		"url": "https://pfgithub.github.io/"
+	},
+	"repository": "github:pfgithub/vscode-shortcutslang-extension",
+	"publisher": "pfg",
 	"main": "./out/extension.js",
 	"contributes": {
 		"languages": [
