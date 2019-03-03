@@ -30,6 +30,17 @@ export function activate(context: vscode.ExtensionContext) {
 		item.insertText = new vscode.SnippetString(thisAction.autocomplete);
 		return item;
 	});
+	// context.subscriptions.push(vscode.languages.registerCompletionItemProvider('scpl', {
+	// 	provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
+	// 		return completionItems;
+	// 	}
+	// }));
+	// context.subscriptions.push(vscode.languages.registerHoverProvider('scpl', {
+	// 	provideHover(document, position, token) {
+	// 		console.log(document, position, token);
+	// 		return new vscode.Hover("oh hello");
+	// 	}
+	// }));
 
 	let diagnostics = new ShortcutsDiagnosticsProvider();
 	diagnostics.activate(context.subscriptions);

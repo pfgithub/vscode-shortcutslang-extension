@@ -1,7 +1,7 @@
 {
 	"name": "vscode-shortcutslang-extension",
-	"displayName": "Shortcutslang",
-	"description": "Shortcutslang syntax highlighting, autocompletion, and diagnostics",
+	"displayName": "ScPL Language",
+	"description": "Shortcutslang syntax highlighting, and diagnostics",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.31.0"
@@ -52,6 +52,6 @@
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
-		"shortcutslang": "github:pfgithub/shortcutslang"
+		"scpl": "^1.0.2"
 	}
 }

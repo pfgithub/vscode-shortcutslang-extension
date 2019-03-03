@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as cp from 'child_process';
 import ChildProcess = cp.ChildProcess;
 
-import {parser, PositionedError} from "shortcutslang";
+import {parse, PositionedError} from "scpl";
 
 import * as vscode from 'vscode';
 
@@ -39,31 +39,23 @@ export default class ShortcutsDiagnosticsProvider {
         }
 		let diagnostics: vscode.Diagnostic[] = [];
 
-        const parsed = parser.parse(`${textDocument.getText()}\n`, [1, 1]);
-        if(parsed.remainingStr) {
-            if(!parsed.pos){throw new Error("!parsed.pos")}
-            let range = new vscode.Range(parsed.pos[0] - 1, parsed.pos[1] - 1, parsed.pos[0] + 100, 0);
-            let diagnostic = new vscode.Diagnostic(range, "Parsing Error", vscode.DiagnosticSeverity.Error);
-            diagnostics.push(diagnostic);
-            this.diagnosticCollection.set(textDocument.uri, diagnostics);
-            return;
-            // throw new Error("Str remaining");
-        }
-    
-        let shortcut;
         try{
-            shortcut = parsed.data.asShortcut();
-        }catch(er) {
+            parse(textDocument.getText(), {})
+        }catch(er){
             if(er instanceof PositionedError) {
-                let range = new vscode.Range(er.start[0] - 1, er.start[1] - 1, er.end[0] - 1, er.end[1] - 1);
+                let end = er.end[1] - 1;
+                if(end < 1) {end = 0;} // this shouldn't be an issue but it's not working for some reason
+                let range = new vscode.Range(er.start[0] - 1, er.start[1] - 1, er.end[0] - 1, end);
                 let diagnostic = new vscode.Diagnostic(range, er.message, vscode.DiagnosticSeverity.Error);
                 diagnostics.push(diagnostic);
                 this.diagnosticCollection.set(textDocument.uri, diagnostics);
+            }else{
+                let range = new vscode.Range(0, 0, 100, 0);
+                let diagnostic = new vscode.Diagnostic(range, "Unknown position: "+er.message, vscode.DiagnosticSeverity.Error);
+                diagnostics.push(diagnostic);
+                this.diagnosticCollection.set(textDocument.uri, diagnostics);
             }
-            // throw er;
-            return;
         }
         this.diagnosticCollection.set(textDocument.uri, diagnostics);
-
 	}
 }

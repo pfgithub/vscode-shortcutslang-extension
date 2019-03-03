@@ -64,10 +64,16 @@ styles [] {
 }
 
 .escape : style {
-   color     = red_2
+   color     = red_3
    ace_scope             = escape
    textmate_scope        = constant.character.escape
    pygments_scope        = String.Escape
+}
+.action : style {
+    color = orange
+    ace_scope = function
+    textmate_scope = entity.name.function
+   pygments_scope        = function
 }
 
 .text : style {
