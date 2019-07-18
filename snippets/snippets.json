@@ -15,6 +15,14 @@
 		],
 		"description": "Sets the shortcut's icon"
 	},
+	"dev.scpl.macro.glyph": {
+		"prefix": "@Glyph",
+		"body": [
+			"@Glyph \"${1|airplane,alarm,alien,ambulance,americanfootball,apple,apps,atom,attach,bag,barcode,baseball,basketball,bathtub,battery,bed,bell,bike,binocalars,bitcoin,boat,body,bolt,book,bookbookmark,bookmark,books,bottle,box,boxoutline,boy,braille,briefcase,brush,bulb,bullseye,bus,cake,calculator,calendar,call,camera,car,card,carrot,cart,cat,chatbox,chatbubble,chatbubbles,church,circlebitcoin,circlebottom,circlecheckmark,circlecross,circledollar,circledown,circleeuro,circlefastforward,circleinfo,circleleft,circlepi,circleplay,circleplus,circlepound,circlepower,circlequestion,circlerewind,circleright,circlestop,circletop,circleup,circleyen,city,clipboard,cloud,cloudservice,cocktail,collection,compass,compress,conciergebell,connection,crop,crowd,css,cube,cut,dancing,database,databasenetwork,dice,disabled,document,documentoutline,dog,dollar,elderly,euro,face,filing,film,filter,fish,flag,flame,flask,flower,folder,font,football,fuel,gamepad,gears,gift,girl,glasses,globe,hammer,hammerwrench,hand,hanger,hdd,headphones,heart,hiking,home,horse,hourglass,image,infinite,inhaler,key,keyboard,keyboardoutline,laptop,lifering,like,link,list,loading,loadingdots,locationarrow,locationmarker,lock,mail,mailopen,mallet,man,mask,masks,medical,medicine,microphone,microscope,minimize,moon,more,motorbike,mountain,move,mug,music,news,note,oven,paper,paperplane,parking,paw,peace,pencil,people,person,phone,pill,pills,pipette,plaster,play,playvideo,podcast,podium,pound,print,puzzle,qrcode,quote,rain,recordvideo,recycle,redo,repeat,rocket,rss,running,school,screwdriver,server,share,shirt,shop,shower,shuffle,sign,skiing,sliders,smiley,snow,snowboarding,sound,soup,speaker,stairs,star,stats,steps,stethoscope,stop,student,sun,sunglasses,swimming,sync,syringe,tag,target,telescope,tennisball,thermometer,ticket,time,timer,train,trash,tree,trophy,tv,umbrella,undo,unlock,utensils,video,videocam,walking,wand,wandstar,warning,washer,watch,water,weightlifting,wifi,woman,wrench,yen,youtube,zoom|}\"\n",
+			"$0"
+		],
+		"description": "Sets the shortcut's glyph"
+	},
 	"dev.scpl.macro.set.action": {
 		"prefix": "@Set (action)",
 		"body": [
