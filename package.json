@@ -36,6 +36,12 @@
 				"configuration": "./language-configuration.json"
 			}
 		],
+		"snippets": [
+			{
+				"language": "scpl",
+				"path": "./snippets/snippets.json"
+			}
+		],
 		"grammars": [
 			{
 				"language": "scpl",
