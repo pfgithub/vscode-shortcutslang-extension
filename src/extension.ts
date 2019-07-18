@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 		let item = new vscode.CompletionItem(a.shortName);
 		item.documentation = new vscode.MarkdownString(a.genDocs());
 		//item.detail = //TODO arguments
-		item.insertText = new vscode.SnippetString(a.genDocsUsage().replace("```\n", "").replace("\n```", ""));
+		item.insertText = new vscode.SnippetString(a.genDocsAutocompleteUsage());
 		return item;
 	});
 	context.subscriptions.push(vscode.languages.registerCompletionItemProvider('scpl', {
