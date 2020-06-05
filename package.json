@@ -1,8 +1,9 @@
 {
 	"name": "vscode-shortcutslang-extension",
 	"displayName": "ScPL Language",
-	"description": "Shortcutslang syntax highlighting, and diagnostics",
-	"version": "0.0.2",
+	"description": "ScPL syntax highlighting and diagnostics",
+	"version": "0.0.3",
+	"license": "MIT",
 	"engines": {
 		"vscode": "^1.31.0"
 	},

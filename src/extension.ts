@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.languages.registerHoverProvider('scpl', {
 		provideHover(document, position, token) {
 			let action = getActionFromName(document.getText(document.getWordRangeAtPosition(position)));
-			if(action){
+			if(action && "genDocs" in action){
 				return new vscode.Hover(new vscode.MarkdownString(action.genDocs()));
 			}
 			return;
